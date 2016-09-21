@@ -178,4 +178,8 @@ ihevc_deblk_luma_horz_ft ihevc_deblk_luma_horz_av8;
 ihevc_deblk_chroma_vert_ft ihevc_deblk_chroma_vert_av8;
 ihevc_deblk_chroma_horz_ft ihevc_deblk_chroma_horz_av8;
 
+ihevc_deblk_luma_vert_ft ihevc_deblk_luma_vert_msa;
+ihevc_deblk_luma_horz_ft ihevc_deblk_luma_horz_msa;
+ihevc_deblk_chroma_vert_ft ihevc_deblk_chroma_vert_msa;
+ihevc_deblk_chroma_horz_ft ihevc_deblk_chroma_horz_msa;
 #endif /*_IHEVC_DEBLK_H_*/

@@ -96,4 +96,8 @@ ihevc_hbd_chroma_recon_8x8_ft ihevc_hbd_chroma_recon_8x8;
 ihevc_chroma_recon_16x16_ft ihevc_chroma_recon_16x16;
 ihevc_hbd_chroma_recon_16x16_ft ihevc_hbd_chroma_recon_16x16;
 
+ihevc_chroma_recon_4x4_ft ihevc_chroma_recon_4x4_msa;
+ihevc_chroma_recon_8x8_ft ihevc_chroma_recon_8x8_msa;
+ihevc_chroma_recon_16x16_ft ihevc_chroma_recon_16x16_msa;
+
 #endif /*_IHEVC_CHROMA_RECON_H_*/

@@ -129,4 +129,8 @@ ihevc_memset_ft ihevc_memset_av8;
 ihevc_memset_mul_8_ft ihevc_memset_mul_8_av8;
 ihevc_memset_16bit_ft ihevc_memset_16bit_av8;
 ihevc_memset_16bit_mul_8_ft ihevc_memset_16bit_mul_8_av8;
+
+/* MSA function declarations */
+ihevc_memset_16bit_ft ihevc_memset_16bit_msa;
+ihevc_memset_16bit_mul_8_ft ihevc_memset_16bit_mul_8_msa;
 #endif  //_MEM_FNS_H_

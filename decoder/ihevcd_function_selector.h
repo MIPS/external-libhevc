@@ -70,6 +70,7 @@
 #define D_ARCH_X86_AVX2             14
 #define D_ARCH_MIPS_GENERIC         15
 #define D_ARCH_MIPS_32              16
+#define D_ARCH_MIPS_MSA             17
 
 void ihevcd_init_arch(void *pv_codec);
 
