@@ -190,4 +190,11 @@ ihevc_itrans_recon_4x4_ft ihevc_itrans_recon_4x4_av8;
 ihevc_itrans_recon_8x8_ft ihevc_itrans_recon_8x8_av8;
 ihevc_itrans_recon_16x16_ft ihevc_itrans_recon_16x16_av8;
 ihevc_itrans_recon_32x32_ft ihevc_itrans_recon_32x32_av8;
+
+/* MSA function declarations */
+ihevc_itrans_recon_4x4_ttype1_ft ihevc_itrans_recon_4x4_ttype1_msa;
+ihevc_itrans_recon_4x4_ft ihevc_itrans_recon_4x4_msa;
+ihevc_itrans_recon_8x8_ft ihevc_itrans_recon_8x8_msa;
+ihevc_itrans_recon_16x16_ft ihevc_itrans_recon_16x16_msa;
+ihevc_itrans_recon_32x32_ft ihevc_itrans_recon_32x32_msa;
 #endif /*_IHEVC_ITRANS_RECON_H_*/
