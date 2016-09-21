@@ -121,4 +121,11 @@ ihevc_hbd_recon_16x16_ft ihevc_hbd_recon_16x16;
 ihevc_recon_32x32_ft ihevc_recon_32x32;
 ihevc_hbd_recon_32x32_ft ihevc_hbd_recon_32x32;
 
+/* MSA function declarations */
+ihevc_recon_4x4_ttype1_ft ihevc_recon_4x4_ttype1_msa;
+ihevc_recon_4x4_ft ihevc_recon_4x4_msa;
+ihevc_recon_8x8_ft ihevc_recon_8x8_msa;
+ihevc_recon_16x16_ft ihevc_recon_16x16_msa;
+ihevc_recon_32x32_ft ihevc_recon_32x32_msa;
+
 #endif /*_IHEVC_RECON_H_*/
