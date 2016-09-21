@@ -115,4 +115,8 @@ ihevcd_fmt_conv_420sp_to_rgba8888_ft ihevcd_fmt_conv_420sp_to_rgba8888_av8;
 ihevcd_fmt_conv_420sp_to_420sp_ft ihevcd_fmt_conv_420sp_to_420sp_av8;
 ihevcd_fmt_conv_420sp_to_420p_ft ihevcd_fmt_conv_420sp_to_420p_av8;
 
+/* MSA function declarations */
+ihevcd_fmt_conv_420sp_to_rgb565_ft ihevcd_fmt_conv_420sp_to_rgb565_msa;
+ihevcd_fmt_conv_420sp_to_420sp_ft ihevcd_fmt_conv_420sp_to_420sp_msa;
+ihevcd_fmt_conv_420sp_to_420p_ft ihevcd_fmt_conv_420sp_to_420p_msa;
 #endif /* _IHEVCD_FMT_CONV_H_ */

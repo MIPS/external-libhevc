@@ -74,4 +74,8 @@ ihevcd_itrans_recon_dc_chroma_ft ihevcd_itrans_recon_dc_chroma_sse42;
 ihevcd_itrans_recon_dc_luma_ft ihevcd_itrans_recon_dc_luma_av8;
 ihevcd_itrans_recon_dc_chroma_ft ihevcd_itrans_recon_dc_chroma_av8;
 
+/* MSA function declarations */
+ihevcd_itrans_recon_dc_luma_ft ihevcd_itrans_recon_dc_luma_msa;
+ihevcd_itrans_recon_dc_chroma_ft ihevcd_itrans_recon_dc_chroma_msa;
+
 #endif /* _IHEVCD_ITRANS_RECON_DC_H_ */

@@ -60,16 +60,25 @@
 
 void ihevcd_init_function_ptr_mips_generic(codec_t *ps_codec);
 void ihevcd_init_function_ptr_mips_32(codec_t *ps_codec);
+void ihevcd_init_function_ptr_msa(codec_t *ps_codec);
 
 void ihevcd_init_function_ptr(void *pv_codec)
 {
     codec_t *ps_codec = (codec_t *)pv_codec;
+
+    ihevcd_init_function_ptr_mips_generic(ps_codec);
+
     switch(ps_codec->e_processor_arch)
     {
 #if ENABLE_MIPS32_SIMD
         case ARCH_MIPS_32:
             ihevcd_init_function_ptr_mips_32(ps_codec);
             break;
+#endif
+#ifndef DISABLE_MSA
+        case ARCH_MIPS_MSA:
+            ihevcd_init_function_ptr_msa(ps_codec);
+        break;
 #endif
         case ARCH_MIPS_GENERIC:
         default:
@@ -81,5 +90,16 @@ void ihevcd_init_function_ptr(void *pv_codec)
 void ihevcd_init_arch(void *pv_codec)
 {
     codec_t *ps_codec = (codec_t *)pv_codec;
+
+#ifdef DEFAULT_ARCH
+#if DEFAULT_ARCH == D_ARCH_MIPS_NOMSA
+    ps_codec->e_processor_arch = ARCH_MIPS_GENERIC;
+#elif DEFAULT_ARCH == D_ARCH_MIPS_MSA
+    ps_codec->e_processor_arch = ARCH_MIPS_MSA;
+#elif DEFAULT_ARCH == ENABLE_MIPS32_SIMD
     ps_codec->e_processor_arch = ARCH_MIPS_32;
+#endif
+#else
+    ps_codec->e_processor_arch = ARCH_MIPS_MSA;
+#endif
 }
