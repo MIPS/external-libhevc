@@ -206,4 +206,10 @@ ihevc_pad_left_chroma_ft ihevc_pad_left_chroma_av8;
 ihevc_pad_right_luma_ft ihevc_pad_right_luma_av8;
 ihevc_pad_right_chroma_ft ihevc_pad_right_chroma_av8;
 
+/* MSA function declarations */
+ihevc_pad_left_luma_ft ihevc_pad_left_luma_msa;
+ihevc_pad_left_chroma_ft ihevc_pad_left_chroma_msa;
+ihevc_pad_right_luma_ft ihevc_pad_right_luma_msa;
+ihevc_pad_right_chroma_ft ihevc_pad_right_chroma_msa;
+
 #endif /*_IHEVC_PADDING_H_*/

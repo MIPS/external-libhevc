@@ -281,6 +281,35 @@ cc_library_static {
                 "decoder/mips/ihevcd_function_selector.c",
                 "decoder/mips/ihevcd_function_selector_mips_generic.c",
             ],
+
+            cflags: [
+                "-DDISABLE_MSA",
+                "-DDEFAULT_ARCH=D_ARCH_MIPS_NOMSA",
+            ],
+
+            msa: {
+                srcs: [
+                    "decoder/mips/ihevcd_function_selector_msa.c",
+                    "decoder/mips/ihevcd_itrans_recon_dc_msa.c",
+                    "decoder/mips/ihevcd_fmt_conv_msa.c",
+                    "common/mips/ihevc_inter_pred_luma_filters_msa.c",
+                    "common/mips/ihevc_inter_pred_chroma_filters_msa.c",
+                    "common/mips/ihevc_intra_pred_filters_msa.c",
+                    "common/mips/ihevc_padding_msa.c",
+                    "common/mips/ihevc_mem_fns_msa.c",
+                    "common/mips/ihevc_itrans_recon_msa.c",
+                    "common/mips/ihevc_recon_msa.c",
+                    "common/mips/ihevc_weighted_pred_msa.c",
+                    "common/mips/ihevc_deblk_edge_filter_msa.c",
+                    "common/mips/ihevc_sao_msa.c",
+                ],
+
+                cflags: [
+                    "-UDISABLE_MSA",
+                    "-UDEFAULT_ARCH",
+                    "-DDEFAULT_ARCH=D_ARCH_MIPS_MSA",
+                ],
+            },
         },
 
         mips: {
@@ -293,6 +322,35 @@ cc_library_static {
                 "decoder/mips/ihevcd_function_selector.c",
                 "decoder/mips/ihevcd_function_selector_mips_generic.c",
             ],
+
+            cflags: [
+                "-DDISABLE_MSA",
+                "-DDEFAULT_ARCH=D_ARCH_MIPS_NOMSA",
+            ],
+
+            msa: {
+                srcs: [
+                    "decoder/mips/ihevcd_function_selector_msa.c",
+                    "decoder/mips/ihevcd_itrans_recon_dc_msa.c",
+                    "decoder/mips/ihevcd_fmt_conv_msa.c",
+                    "common/mips/ihevc_inter_pred_luma_filters_msa.c",
+                    "common/mips/ihevc_inter_pred_chroma_filters_msa.c",
+                    "common/mips/ihevc_intra_pred_filters_msa.c",
+                    "common/mips/ihevc_padding_msa.c",
+                    "common/mips/ihevc_mem_fns_msa.c",
+                    "common/mips/ihevc_itrans_recon_msa.c",
+                    "common/mips/ihevc_recon_msa.c",
+                    "common/mips/ihevc_weighted_pred_msa.c",
+                    "common/mips/ihevc_deblk_edge_filter_msa.c",
+                    "common/mips/ihevc_sao_msa.c",
+                ],
+
+                cflags: [
+                    "-UDISABLE_MSA",
+                    "-UDEFAULT_ARCH",
+                    "-DDEFAULT_ARCH=D_ARCH_MIPS_MSA",
+                ],
+            },
         },
 
         x86_64: {
