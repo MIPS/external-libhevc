@@ -5,7 +5,6 @@ libhevcd_srcs_c_mips64  +=  decoder/mips/ihevcd_function_selector.c
 libhevcd_srcs_c_mips64  +=  decoder/mips/ihevcd_function_selector_mips_generic.c
 
 ifeq ($(ARCH_MIPS_HAS_MSA),true)
-libhevcd_cflags_mips64  += -mfp64 -mmsa
 libhevcd_cflags_mips64  += -DDEFAULT_ARCH=D_ARCH_MIPS_MSA
 
 libhevcd_srcs_c_mips64  +=  decoder/mips/ihevcd_function_selector_msa.c
