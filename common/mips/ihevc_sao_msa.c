@@ -709,7 +709,7 @@ static void hevc_sao_edge_0deg_16w_in_place_msa(UWORD8 *src, WORD32 src_stride,
             offset_mask2 = ADDVI_B(offset_mask2, 2);
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
             offset_mask2 = __msa_vshf_b(offset_mask2, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
             offset_mask2 = offset_mask2 & mask_reg;
 
             UNPCK_UB_SH(src_zero0, src0, src1);
@@ -754,7 +754,7 @@ static void hevc_sao_edge_0deg_16w_in_place_msa(UWORD8 *src, WORD32 src_stride,
             offset_mask0 = (v16i8) diff_minus10 + (v16i8) diff_plus10;
             offset_mask0 = ADDVI_B(offset_mask0, 2);
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
             UNPCK_UB_SH(src_zero0, src0, src1);
             UNPCK_SB_SH(offset_mask0, temp0, temp1);
             ADD2(temp0, src0, temp1, src1, temp0, temp1);
@@ -830,7 +830,7 @@ static void hevc_sao_edge_0deg_8w_in_place_msa(UWORD8 *src, WORD32 src_stride,
         offset_mask2 = ADDVI_B(offset_mask2, 2);
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask2 = __msa_vshf_b(offset_mask2, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
         offset_mask2 = offset_mask2 & mask_reg;
 
         UNPCK_UB_SH(src_zero0, src0, src1);
@@ -903,7 +903,7 @@ static void hevc_sao_edge_0deg_4w_in_place_msa(UWORD8 *src, WORD32 src_stride,
         offset_mask = (v16i8) diff_minus10 + (v16i8) diff_plus10;
         offset_mask = ADDVI_B(offset_mask, 2);
         offset_mask = __msa_vshf_b(offset_mask, edge_idx, edge_idx);
-        offset_mask &= mask_reg;
+        offset_mask &= (v16i8)mask_reg;
         UNPCK_UB_SH(src_zero0, src0, src1);
         UNPCK_SB_SH(offset_mask, temp0, temp1);
         ADD2(temp0, src0, temp1, src1, temp0, temp1);
@@ -1254,8 +1254,8 @@ static void hevc_sao_edge_135deg_8w_in_place_msa(UWORD8 *src, WORD32 src_stride,
             offset_mask1 = ADDVI_B(offset_mask1, 2);
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
             offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
-            offset_mask1 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
+            offset_mask1 &= (v16i8)mask_reg;
 
             ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1302,7 +1302,7 @@ static void hevc_sao_edge_135deg_8w_in_place_msa(UWORD8 *src, WORD32 src_stride,
             offset_mask0 = sign_up_vec0 + (v16i8) diff_plus0;
             offset_mask0 = ADDVI_B(offset_mask0, 2);
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
 
             src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1362,8 +1362,8 @@ static void hevc_sao_edge_135deg_4w_in_place_msa(UWORD8 *src, WORD32 src_stride,
         offset_mask1 = ADDVI_B(offset_mask1, 2);
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask1 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask1 &= (v16i8)mask_reg;
 
         ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1400,7 +1400,7 @@ static void hevc_sao_edge_135deg_4w_in_place_msa(UWORD8 *src, WORD32 src_stride,
         offset_mask0 = sign_up_vec0 + (v16i8) diff_plus0;
         offset_mask0 = ADDVI_B(offset_mask0, 2);
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
 
         src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1482,8 +1482,8 @@ static void hevc_sao_edge_45deg_8w_in_place_msa(UWORD8 *src, WORD32 src_stride,
             offset_mask1 = ADDVI_B(offset_mask1, 2);
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
             offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
-            offset_mask1 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
+            offset_mask1 &= (v16i8)mask_reg;
 
             ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1524,7 +1524,7 @@ static void hevc_sao_edge_45deg_8w_in_place_msa(UWORD8 *src, WORD32 src_stride,
             offset_mask0 = sign_up_vec0 + (v16i8) diff_plus0;
             offset_mask0 = ADDVI_B(offset_mask0, 2);
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
 
             src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1590,8 +1590,8 @@ static void hevc_sao_edge_45deg_4w_in_place_msa(UWORD8 *src, WORD32 src_stride,
         offset_mask1 = ADDVI_B(offset_mask1, 2);
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask1 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask1 &= (v16i8)mask_reg;
 
         ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1629,7 +1629,7 @@ static void hevc_sao_edge_45deg_4w_in_place_msa(UWORD8 *src, WORD32 src_stride,
         offset_mask0 = sign_up_vec0 + (v16i8) diff_plus0;
         offset_mask0 = ADDVI_B(offset_mask0, 2);
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
 
         src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -1796,8 +1796,8 @@ static void hevc_sao_edge_chroma_0deg_16w_in_place_msa(UWORD8 *src,
                            (v16i8) diff_plus12;
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
             offset_mask2 = __msa_vshf_b(offset_mask2, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
-            offset_mask2 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
+            offset_mask2 &= (v16i8)mask_reg;
 
             UNPCK_UB_SH(src_zero0, src0, src1);
             UNPCK_SB_SH(offset_mask0, temp0, temp1);
@@ -1840,7 +1840,7 @@ static void hevc_sao_edge_chroma_0deg_16w_in_place_msa(UWORD8 *src,
             offset_mask0 = add_coeff + (v16i8) diff_minus10 +
                            (v16i8) diff_plus10;
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
             UNPCK_UB_SH(src_zero0, src0, src1);
             UNPCK_SB_SH(offset_mask0, temp0, temp1);
             ADD2(temp0, src0, temp1, src1, temp0, temp1);
@@ -1923,8 +1923,8 @@ static void hevc_sao_edge_chroma_0deg_8w_in_place_msa(UWORD8 *src,
         offset_mask2 = add_coeff + (v16i8) diff_minus12 + (v16i8) diff_plus12;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask2 = __msa_vshf_b(offset_mask2, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask2 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask2 &= (v16i8)mask_reg;
 
         UNPCK_UB_SH(src_zero0, src0, src1);
         UNPCK_SB_SH(offset_mask0, temp0, temp1);
@@ -1955,7 +1955,7 @@ static void hevc_sao_edge_chroma_0deg_8w_in_place_msa(UWORD8 *src,
                          diff_minus10, diff_plus10);
         offset_mask0 = add_coeff + (v16i8) diff_minus10 + (v16i8) diff_plus10;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
 
         src0 = (v8i16) __msa_ilvr_b(zero, src_zero0);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2038,7 +2038,7 @@ static void hevc_sao_edge_chroma_0deg_4w_in_place_msa(UWORD8 *src,
         offset_mask2 = add_coeff + (v16i8) diff_minus12 + (v16i8) diff_plus12;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask2 = __msa_vshf_b(offset_mask2, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
         offset_mask2 = offset_mask2 & mask_reg;
 
         UNPCK_UB_SH(src_zero0, src0, src1);
@@ -2069,7 +2069,7 @@ static void hevc_sao_edge_chroma_0deg_4w_in_place_msa(UWORD8 *src,
                          diff_minus10, diff_plus10);
         offset_mask0 = add_coeff + (v16i8) diff_minus10 + (v16i8) diff_plus10;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
 
         src0 = (v8i16) __msa_ilvr_b(zero, src_zero0);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2230,8 +2230,8 @@ static void hevc_sao_edge_chroma_90deg_8w_in_place_msa(UWORD8 *src,
         offset_mask1 = add_coeff - (v16i8) diff_minus10 + (v16i8) diff_minus11;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask1 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask1 &= (v16i8)mask_reg;
         ILVR_B2_SH(zero, src_minus11, zero, src10, src00, src01);
         UNPCK_R_SB_SH(offset_mask0, temp0);
         UNPCK_R_SB_SH(offset_mask1, temp1);
@@ -2258,7 +2258,7 @@ static void hevc_sao_edge_chroma_90deg_8w_in_place_msa(UWORD8 *src,
 
         offset_mask0 = add_coeff + (v16i8) diff_minus10 + (v16i8) sign_up_vec;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
         UNPCK_R_SB_SH(offset_mask0, temp0);
         src00 = (v8i16) __msa_ilvr_b(zero, (v16i8) src_minus11);
 
@@ -2309,8 +2309,8 @@ static void hevc_sao_edge_chroma_90deg_4w_in_place_msa(UWORD8 *src,
         offset_mask1 = add_coeff - (v16i8) diff_minus10 + (v16i8) diff_minus11;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask1 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask1 &= (v16i8)mask_reg;
         ILVR_B2_SH(zero, src_minus11, zero, src10, src00, src01);
         UNPCK_R_SB_SH(offset_mask0, temp0);
         UNPCK_R_SB_SH(offset_mask1, temp1);
@@ -2340,7 +2340,7 @@ static void hevc_sao_edge_chroma_90deg_4w_in_place_msa(UWORD8 *src,
 
         offset_mask0 = add_coeff + (v16i8) diff_minus10 + (v16i8) sign_up_vec;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
         UNPCK_R_SB_SH(offset_mask0, temp0);
         src00 = (v8i16) __msa_ilvr_b(zero, (v16i8) src_minus11);
 
@@ -2446,8 +2446,8 @@ static void hevc_sao_edge_chroma_135deg_8w_in_place_msa(UWORD8 *src,
             offset_mask1 = add_coeff + sign_up_vec1 + (v16i8) diff_plus1;
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
             offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
-            offset_mask1 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
+            offset_mask1 &= (v16i8)mask_reg;
 
             ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2497,7 +2497,7 @@ static void hevc_sao_edge_chroma_135deg_8w_in_place_msa(UWORD8 *src,
 
             offset_mask0 = add_coeff + sign_up_vec0 + (v16i8) diff_plus0;
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
 
             src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2567,8 +2567,8 @@ static void hevc_sao_edge_chroma_135deg_4w_in_place_msa(UWORD8 *src,
         offset_mask1 = add_coeff + sign_up_vec1 + (v16i8) diff_plus1;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask1 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask1 &= (v16i8)mask_reg;
 
         ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2607,7 +2607,7 @@ static void hevc_sao_edge_chroma_135deg_4w_in_place_msa(UWORD8 *src,
 
         offset_mask0 = add_coeff + sign_up_vec0 + (v16i8) diff_plus0;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
 
         src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2706,8 +2706,8 @@ static void hevc_sao_edge_chroma_45deg_8w_in_place_msa(UWORD8 *src,
             offset_mask1 = add_coeff + sign_up_vec1 + (v16i8) diff_plus1;
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
             offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
-            offset_mask1 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
+            offset_mask1 &= (v16i8)mask_reg;
 
             ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2751,7 +2751,7 @@ static void hevc_sao_edge_chroma_45deg_8w_in_place_msa(UWORD8 *src,
 
             offset_mask0 = add_coeff + sign_up_vec0 + (v16i8) diff_plus0;
             offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-            offset_mask0 &= mask_reg;
+            offset_mask0 &= (v16i8)mask_reg;
 
             src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
             UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2825,8 +2825,8 @@ static void hevc_sao_edge_chroma_45deg_4w_in_place_msa(UWORD8 *src,
         offset_mask1 = add_coeff + sign_up_vec1 + (v16i8) diff_plus1;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
         offset_mask1 = __msa_vshf_b(offset_mask1, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
-        offset_mask1 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
+        offset_mask1 &= (v16i8)mask_reg;
 
         ILVR_B2_SH(zero, src_zero0, zero, src_zero1, src0, src1);
         UNPCK_R_SB_SH(offset_mask0, temp0);
@@ -2866,7 +2866,7 @@ static void hevc_sao_edge_chroma_45deg_4w_in_place_msa(UWORD8 *src,
 
         offset_mask0 = add_coeff + sign_up_vec0 + (v16i8) diff_plus0;
         offset_mask0 = __msa_vshf_b(offset_mask0, edge_idx, edge_idx);
-        offset_mask0 &= mask_reg;
+        offset_mask0 &= (v16i8)mask_reg;
 
         src0 = (v8i16) __msa_ilvr_b((v16i8) zero, (v16i8) src_zero0);
         UNPCK_R_SB_SH(offset_mask0, temp0);
